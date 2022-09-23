@@ -1,3 +1,4 @@
 #!/bin/bash
-dpkg -i chrome.deb
-cp chromedriver /bin/chromedriver
+dpkg -i ./src/chrome.deb
+cp ./src/chromedriver /bin/chromedriver
+pip3 install selenium

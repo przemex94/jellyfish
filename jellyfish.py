@@ -1,9 +1,9 @@
 #!/usr/bin/python3 
 from selenium import webdriver
 print("-------------------------------------")
-print(" jellyfish.py - Clickjacking checker.")
-print(" Copyright (c) ING Hubs Poland       ")
-print(" przemyslaw.aniol@ing.com            ")
+print("jellyfish.py - Clickjacking checker. ")
+print("Copyright (c) ING Hubs Poland        ")
+print("przemex94 - przemyslaw.aniol@ing.com ")
 print("-------------------------------------")
 print("  =====D                             ")
 print("                        =====D       ")
@@ -20,18 +20,26 @@ for line in lines:
     <body>
     <iframe  id="clickframe" name="clickframe" src="'''+URL+'''" height='600px' width='800px'></iframe>
     </body>
-    </html>'''  
+    </html>'''
     html_file = 'jellyfish.html'
     f = open(html_file, 'w+')
     f.write(html)
     f.close()
-    driver = webdriver.Chrome()
-    driver.get("file:///opt/jellyfish/jellyfish.html")
-    driver.switch_to.frame('clickframe')
-    result = driver.page_source.__contains__("refused to connect.")
-    if result == 1:
+
+    first = webdriver.Chrome()
+    first.get(URL)
+    firstresult = first.page_source.__contains__("refused to connect.")
+    
+    second = webdriver.Chrome()
+    second.get("file:///opt/jellyfish/jellyfish.html")
+    second.switch_to.frame('clickframe')
+    secondresult = second.page_source.__contains__("refused to connect.")
+
+    if ((firstresult != secondresult) and (secondresult == 1)):
         pass
     else:
-        print(line.strip()+" "+"-"+" ""clickjacked!")
-    driver.close()
-driver.quit()
+        print(line.strip()+" "+"-"+" ""CLICKJACKED!")
+    first.close()
+    second.close()
+first.quit()
+second.quit()
