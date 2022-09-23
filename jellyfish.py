@@ -1,14 +1,13 @@
 #!/usr/bin/python3 
 from selenium import webdriver
-print("-------------------------------------")
-print("jellyfish.py - Clickjacking checker. ")
-print("Copyright (c) ING Hubs Poland        ")
-print("przemex94 - przemyslaw.aniol@ing.com ")
-print("-------------------------------------")
-print("  =====D                             ")
-print("                        =====D       ")
-print("         =====D                      ")
-print("-------------------------------------")
+print("--------------------------------------------")
+print("jellyfish.py - Clickjacking checker.        ")
+print("przemex94 - przemyslaw.aniol@protonmail.com ")
+print("--------------------------------------------")
+print("     =====D                                 ")
+print("                              =====D        ")
+print("               =====D                       ")
+print("--------------------------------------------")
 file = open('jellyfish.txt', 'r')
 lines = file.readlines()
 i = 0
